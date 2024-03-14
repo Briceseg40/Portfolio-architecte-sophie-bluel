@@ -44,13 +44,18 @@ async function displayCategories() {
 
 async function filterCategory(e) {
     galleryContainer.innerHTML = "";
+    const btnFiltre = e.target;
     const works = await getWorks();
     for (const work of works) {
         if (work.category.id == e.target.dataset.categoryId || e.target.dataset.categoryId == undefined) {
             displayWork(work);
         }
     }
-
-
+    const filtresBtns = document.querySelectorAll(".btn-filtre"); // Sélectionner tous les boutons de filtre
+    filtresBtns.forEach(btnFiltre => {
+        btnFiltre.style.backgroundColor = "white";
+        btnFiltre.style.color = "#1D6154";
+    });
+    btnFiltre.style.backgroundColor = "#1D6154";
+    btnFiltre.style.color = "white";
 }
-

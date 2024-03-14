@@ -31,25 +31,28 @@
 		<div class="container-login">
 			<div class="card-login">
 				<h2>Log in</h2>
-				<form action="#">
+				<form action="#" id="login-form">
 					<div class="input-box">
 						<label>E-mail</label>
 						<br>
 						<!-- <span class="icon"></span> -->
-						<input type="email" required>
+						<input type="email" name="email" id="email" required>
 					</div>
 					<div class="input-box">
 						<label>Mot de passe</label>
 						<br>
 						<!-- <span class="icon"></span> -->
-						<input type="password" required>
+						<input type="password" name="password" id="password" required>
+					</div>
+					<div id="error-message">Email ou mot de passe incorrect</div>
+					<div class="form-submit">
+						<input type="submit" id="btn-login" value="Se connecter">
+						<a href="/">Mot de passe oublié</a>
 					</div>
 				</form>
+				
 			</div>
-			<div class="form-submit">
-				<button type="submit" class="btn-login">Se connecter</button>
-				<a href="/">Mot de passe oublié</a>
-			</div>
+			
 		</div>
 	</main>
 
@@ -60,6 +63,8 @@
 			</ul>
 		</nav>
 	</footer>
+	<script src="../js/api.js" ></script>
+	<script src="../js/login.js" ></script>
 </body>
 
 </html>
