@@ -4,46 +4,26 @@ const categories = await getCategories();
 }*/
 
 /* recuperation des Categorie */ 
-const filtres = document.querySelector(".filtres");
-const galleryContainer = document.querySelector(".gallery");
 
-filtreData();
-galleryData();
-
-
-async function filtreData() {
-  try {
-    const response = await fetch('http://localhost:5678/api/categories');
-    const html = await response.json();
-    console.log(html); 
-    for (const category of html) {
-      const btnFiltres = document.createElement("button");
-      btnFiltres.innerText = category.name;
-      filtres.appendChild(btnFiltres);
-    }
-  } catch (error) {
-    console.error('Une erreur s\'est produite :', error);
+async function getWorks() {
+  const res = await fetch('http://localhost:5678/api/works');
+  const works = await res.json();
+  console.log(works)
+  return works;
   }
-}
-// {accept: "application/json", 'Content-Type': "application/json" } 
-
-async function galleryData() {
- 
-    const res = await fetch('http://localhost:5678/api/works');
-    const data = await res.json();
-    for (const item of data) {
-      const figureGallery = document.createElement("figure");
-      const imgGallery = document.createElement("img");
-      const figcapGallery = document.createElement("figcaption");
-      imgGallery.src = item.imageUrl;
-      figcapGallery.innerText = item.title;
-      galleryContainer.appendChild(figureGallery);
-      figureGallery.appendChild(imgGallery);
-      figureGallery.appendChild(figcapGallery);
-    }
-}
-
-/* 
--H 'accept: application/json' \
+  /* 
+  -H 'accept: application/json' \
   -H 'Content-Type: application/json' \
   */
+ 
+ async function getCategories() {
+     const response = await fetch('http://localhost:5678/api/categories');
+     const categories = await response.json();
+     console.log(categories); 
+     return categories;
+   
+}
+// fetch(url, {methode: "POST", body: ...})
+ // {accept: "application/json", 'Content-Type': "application/json" } 
+//  body: JSON.stringify({username: "", password:""})
+// method: "MACHIN", body: JSON.stringify(), headers: {...}
