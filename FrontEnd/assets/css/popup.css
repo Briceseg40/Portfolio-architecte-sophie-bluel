@@ -1,23 +1,18 @@
 @charset "UTF-8";
 .popup {
-  opacity: 0;
+  display: none;
   position: fixed;
-  pointer-events: none;
-  top: 0;
-  left: 0;
+  justify-content: center;
   width: 100%;
   height: 100%;
   background-color: rgba(151, 150, 150, 0.5);
+  z-index: 1;
   /* Fond semi-transparent blanc */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
   /* Assure que la popup est au-dessus de tout le reste */
 }
 .popup .modificate {
+  top: 10%;
   background-color: white;
-  display: none;
   position: relative;
   width: 630px;
   height: 688px;
@@ -31,7 +26,9 @@
   padding-top: 50px;
   font-size: 26px;
 }
-.popup .modificate i {
+.popup .modificate .cross-btn {
+  background-color: transparent;
+  border: none;
   position: absolute;
   font-size: 21px;
   top: 25px;
@@ -47,7 +44,15 @@
   flex-wrap: wrap;
   border-bottom: 1px solid #B3B3B3;
 }
-.popup .modificate .gallery-popup img {
+.popup .modificate .gallery-popup div {
+  position: relative;
+}
+.popup .modificate .gallery-popup div i {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+.popup .modificate .gallery-popup div img {
   margin: 10px 5px;
   width: 76px;
   height: 100px;

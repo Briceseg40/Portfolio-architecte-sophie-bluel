@@ -184,8 +184,14 @@ input[type="submit"]{
 }
 
 footer nav ul {
+	cursor: pointer;
 	display: flex;
 	justify-content: flex-end;
 	margin: 2em
+}
+
+button {
+	background: none;
+                border: none;
 }
 

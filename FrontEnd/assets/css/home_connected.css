@@ -31,10 +31,14 @@ main #portfolio .title-portfolio .i-modif {
   display: flex;
   align-items: center;
 }
-main #portfolio .title-portfolio .i-modif p {
+main #portfolio .title-portfolio .i-modif .btn-pop {
+  cursor: pointer;
+  display: flex;
+}
+main #portfolio .title-portfolio .i-modif .btn-pop p {
   font-size: 14px;
 }
-main #portfolio .title-portfolio .i-modif i {
+main #portfolio .title-portfolio .i-modif .btn-pop i {
   font-size: 15px;
   padding-right: 10px;
   font-weight: 300;

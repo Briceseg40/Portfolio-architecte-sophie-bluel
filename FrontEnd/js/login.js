@@ -43,10 +43,8 @@ return token;
 
 });
 
-document.getElementById("logout").addEventListener("click", function(event) {
-    event.preventDefault();
+document.getElementById("logout").addEventListener("click", function() {
     localStorage.removeItem('token');
-    window.location.href = '../index.html';
-
+    window.location.href = '../html/index.html';
 });
 

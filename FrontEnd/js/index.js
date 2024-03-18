@@ -1,5 +1,6 @@
 const filtres = document.querySelector(".filtres");
 const galleryContainer = document.querySelector(".gallery");
+const iCross = document.querySelector(".i-cross");
 
 displayWorks();
 displayCategories();
@@ -22,15 +23,6 @@ function displayWork(work) {
     galleryContainer.appendChild(figureGallery);
     figureGallery.appendChild(imgGallery);
     figureGallery.appendChild(figcapGallery);
-    
-    setTimeout(displayPopup, 0); // Appel de displayPopup après un court délai
-
-    function displayPopup() {
-        const imgPopup = imgGallery.cloneNode(true);
-        const figurePopup = document.createElement("figure");
-        figurePopup.appendChild(imgPopup);
-        document.querySelector('.gallery-popup').appendChild(figurePopup);
-    }
 }
 
 
