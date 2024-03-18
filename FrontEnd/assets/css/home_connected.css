@@ -8,9 +8,34 @@
 }
 .banner .banner-element {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   text-align: center;
   align-items: center;
-  width: 50%;
   height: 100%;
+}
+.banner .banner-element i {
+  font-size: 15px;
+  padding-right: 10px;
+}
+
+main #portfolio .title-portfolio {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+main #portfolio .title-portfolio h2 {
+  padding-right: 15px;
+}
+main #portfolio .title-portfolio .i-modif {
+  display: flex;
+  align-items: center;
+}
+main #portfolio .title-portfolio .i-modif p {
+  font-size: 14px;
+}
+main #portfolio .title-portfolio .i-modif i {
+  font-size: 15px;
+  padding-right: 10px;
+  font-weight: 300;
 }/*# sourceMappingURL=home_connected.css.map */

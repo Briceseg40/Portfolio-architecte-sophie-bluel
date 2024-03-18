@@ -46,8 +46,3 @@ body main .container-login .form-submit a {
   color: black;
   font-size: 16px;
 }/*# sourceMappingURL=login.css.map */
-
-#error-message {
-  display: none;
-  color: red;
-}

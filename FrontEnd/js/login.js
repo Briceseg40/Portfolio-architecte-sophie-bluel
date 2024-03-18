@@ -23,7 +23,8 @@ document.getElementById("login-form").addEventListener("submit", async function(
 
         if (!response.ok) {
             throw new Error('Erreur lors de la connexion');
-            document.getElementById("error-message").style.display = "block";
+            document.getElementById("error-message").style.display = "block"; // Afficher le message d'erreur
+        throw new Error('Erreur lors de la connexion'); // Lancer une erreur
         }
         const responseData = await response.json();
         const token = responseData.token;
