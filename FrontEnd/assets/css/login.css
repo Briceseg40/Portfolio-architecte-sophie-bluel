@@ -14,11 +14,14 @@ body main .container-login {
 body main .container-login .card-login h2 {
   text-align: center;
 }
-body main .container-login .input-box {
+body main .container-login #login-form .error-block {
+  display: block;
+}
+body main .container-login #login-form .input-box {
   font-size: 16px;
   margin: 10px 0 35px 0;
 }
-body main .container-login .input-box input {
+body main .container-login #login-form .input-box input {
   width: 400px;
   font-size: 20px;
   padding-left: 10px;

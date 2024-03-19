@@ -4,47 +4,25 @@ document.getElementById("login-form").addEventListener("submit", async function(
     // Récupérer les valeurs des champs email et mot de passe
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
-
     // Créer un objet avec les données du formulaire
     const formData = {
         email: email,
         password: password
     };
+    const maybetoken = await login(formData);
 
-    try {
-        // Envoyer les données à l'API
-        const response = await fetch('http://localhost:5678/api/users/login', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(formData)
-        });
-
-        if (!response.ok) {
-            throw new Error('Erreur lors de la connexion');
-            document.getElementById("error-message").style.display = "block"; // Afficher le message d'erreur
-        throw new Error('Erreur lors de la connexion'); // Lancer une erreur
-        }
-        const responseData = await response.json();
-        const token = responseData.token;
-        // Stocker le token dans le stockage local
-        localStorage.setItem('token', token);
-
-        // Rediriger l'utilisateur vers une autre page si nécessaire
+    if (maybetoken) {
+         localStorage.setItem('token', maybetoken);
         window.location.href = '../html/home_connected.html';
-
-        // Faire quelque chose avec la réponse de l'API si nécessaire
-        console.log(responseData);
-    } catch (error) {
-        console.error('Erreur:', error);
     }
-return token;
-
+    else {
+        alert("ogo")
+        document.getElementById("error-block").classList.add = "error-block"; 
+    }
 });
 
-document.getElementById("logout").addEventListener("click", function() {
-    localStorage.removeItem('token');
-    window.location.href = '../html/index.html';
-});
+// document.getElementById("logout").addEventListener("click", function() {
+//     localStorage.removeItem('token');
+//     window.location.href = '../html/index.html';
+// });
 
