@@ -27,12 +27,23 @@
   font-size: 26px;
 }
 .popup .modificate .cross-btn {
+  display: flex;
   background-color: transparent;
   border: none;
   position: absolute;
   font-size: 21px;
   top: 25px;
   right: 30px;
+}
+
+.cross-btn-img {
+  position: absolute;
+  background-color: black;
+  top: 5px;
+  right: 5px;
+  width: 17px;
+  height: 17px;
+  z-index: 1; 
 }
 .popup .modificate .gallery-popup {
   margin: 25px auto;
@@ -45,15 +56,19 @@
   border-bottom: 1px solid #B3B3B3;
 }
 .popup .modificate .gallery-popup div {
+  margin-right: 15px;
+  margin-bottom: 10px;
   position: relative;
 }
+
 .popup .modificate .gallery-popup div i {
-  position: absolute;
-  top: 5px;
-  right: 5px;
+  font-size: 11px;
+  color: white; 
+  display: flex;
+text-align: center;
+justify-content: center;
 }
 .popup .modificate .gallery-popup div img {
-  margin: 10px 5px;
-  width: 76px;
+  width: 100%;
   height: 100px;
 }/*# sourceMappingURL=popup.css.map */

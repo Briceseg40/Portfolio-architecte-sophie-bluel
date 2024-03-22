@@ -12,8 +12,8 @@
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-bR/EhVyf5x2NQnpCwgo2l79YBgHj3q0ZbYVqfUspZTT+YLhO3fW9W3gQuNVRipfV" crossorigin="anonymous">
 		
 	<meta name="description" content="">
-	<link rel="stylesheet" href="../assets/css/style.css">
 	<link rel="stylesheet" href="../assets/css/login.css">
+	<link rel="stylesheet" href="../assets/css/style.css">
 </head>
 
 <body>
@@ -38,7 +38,7 @@
 						<label>E-mail</label>
 						<br>
 						<!-- <span class="icon"></span> -->
-						<input type="email" name="email" id="email" required>
+						<input type="email" name="email" id="email">
 					</div>
 					<div class="input-box">
 						<label>Mot de passe</label>
@@ -46,7 +46,10 @@
 						<!-- <span class="icon"></span> -->
 						<input type="password" name="password" id="password" required>
 					</div>
-					<div id="error-message" class="error-block">Erreur dans le code</div>
+					<div class="error-message">Utilisateur et/ou mot de
+						passe incorrectes. <br> email: sophie.bluel@test.tld
+
+						password: S0phie</div>
 					<div class="form-submit">
 						<input type="submit" id="btn-login" value="Se connecter">
 						<a href="/">Mot de passe oublié</a>

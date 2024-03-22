@@ -1,6 +1,5 @@
 const filtres = document.querySelector(".filtres");
 const galleryContainer = document.querySelector(".gallery");
-const iCross = document.querySelector(".i-cross");
 
 displayWorks();
 displayCategories();
@@ -61,3 +60,46 @@ async function filterCategory(e) {
     btnFiltre.style.backgroundColor = "#1D6154";
     btnFiltre.style.color = "white";
 }
+
+
+// Récupérer le token de connexion depuis localStorage
+const token = localStorage.getItem('token');
+
+// Vérifier si un token est présent
+if (token) {
+    // Si un token est présent, masquer les éléments avec la classe "content-non-connect" et afficher les éléments avec la classe "content-connect"
+    var nonConnectElements = document.getElementsByClassName("content-non-connect");
+    for (var i = 0; i < nonConnectElements.length; i++) {
+        nonConnectElements[i].style.display = "none";
+    }
+
+    var connectElements = document.getElementsByClassName("content-connect");
+    for (var j = 0; j < connectElements.length; j++) {
+        connectElements[j].style.display = "block";
+    }
+} else {
+    // Si aucun token n'est présent, masquer les éléments avec la classe "content-connect" et afficher les éléments avec la classe "content-non-connect"
+    var connectElements = document.getElementsByClassName("content-connect");
+    for (var k = 0; k < connectElements.length; k++) {
+        connectElements[k].style.display = "none";
+    }
+
+    var nonConnectElements = document.getElementsByClassName("content-non-connect");
+    for (var l = 0; l < nonConnectElements.length; l++) {
+        nonConnectElements[l].style.display = "block";
+    }
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+    // Gestionnaire d'événements pour le lien de déconnexion
+    document.getElementById("logout").addEventListener("click", function(event) {
+        // Empêcher le comportement par défaut du lien (empêcher la navigation)
+        event.preventDefault();
+
+        // Supprimer le token de connexion du localStorage
+        localStorage.removeItem('token');
+
+        // Actualiser la page pour afficher à nouveau les éléments avec la classe "content-non-connect"
+        window.location.reload();
+    });
+});
