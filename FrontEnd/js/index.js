@@ -19,6 +19,7 @@ function displayWork(work) {
     figcapGallery.innerText = work.title;
     const filtresGallery = work.category.name;
     figcapGallery.classList.add("card-image");
+    imgGallery.dataset.id = work.id;
     galleryContainer.appendChild(figureGallery);
     figureGallery.appendChild(imgGallery);
     figureGallery.appendChild(figcapGallery);
@@ -52,7 +53,7 @@ async function filterCategory(e) {
             displayWork(work);
         }
     }
-    const filtresBtns = document.querySelectorAll(".btn-filtre"); // Sélectionner tous les boutons de filtre
+    const filtresBtns = document.querySelectorAll(".btn-filtre"); 
     filtresBtns.forEach(btnFiltre => {
         btnFiltre.style.backgroundColor = "white";
         btnFiltre.style.color = "#1D6154";
@@ -62,44 +63,24 @@ async function filterCategory(e) {
 }
 
 
-// Récupérer le token de connexion depuis localStorage
-const token = localStorage.getItem('token');
+// Récupérer le token de connexion depuis sessionStorage
+const token = sessionStorage.getItem('token');
 
-// Vérifier si un token est présent
 if (token) {
-    // Si un token est présent, masquer les éléments avec la classe "content-non-connect" et afficher les éléments avec la classe "content-connect"
-    var nonConnectElements = document.getElementsByClassName("content-non-connect");
-    for (var i = 0; i < nonConnectElements.length; i++) {
-        nonConnectElements[i].style.display = "none";
-    }
-
-    var connectElements = document.getElementsByClassName("content-connect");
-    for (var j = 0; j < connectElements.length; j++) {
-        connectElements[j].style.display = "block";
-    }
-} else {
-    // Si aucun token n'est présent, masquer les éléments avec la classe "content-connect" et afficher les éléments avec la classe "content-non-connect"
-    var connectElements = document.getElementsByClassName("content-connect");
-    for (var k = 0; k < connectElements.length; k++) {
-        connectElements[k].style.display = "none";
-    }
-
-    var nonConnectElements = document.getElementsByClassName("content-non-connect");
-    for (var l = 0; l < nonConnectElements.length; l++) {
-        nonConnectElements[l].style.display = "block";
-    }
+    var connectElements = document.querySelector("body");
+    connectElements.classList.add("content-connect");  
+    connectElements.classList.remove("content-non-connect");
+} 
+else {
+    var connectElements = document.querySelector("body");
+    connectElements.classList.remove("content-connect");
+    connectElements.classList.add("content-non-connect");  
 }
 
-document.addEventListener("DOMContentLoaded", function() {
-    // Gestionnaire d'événements pour le lien de déconnexion
-    document.getElementById("logout").addEventListener("click", function(event) {
-        // Empêcher le comportement par défaut du lien (empêcher la navigation)
+document.addEventListener("DOMContentLoaded", function() {  
+    document.getElementById("logout").addEventListener("click", function(event) {        
         event.preventDefault();
-
-        // Supprimer le token de connexion du localStorage
-        localStorage.removeItem('token');
-
-        // Actualiser la page pour afficher à nouveau les éléments avec la classe "content-non-connect"
+        sessionStorage.removeItem('token');
         window.location.reload();
     });
 });

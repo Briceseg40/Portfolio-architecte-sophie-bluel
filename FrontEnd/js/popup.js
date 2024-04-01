@@ -1,58 +1,87 @@
 const btnPop = document.querySelector(".btn-pop");
 const crossPop = document.querySelector(".cross-btn");
+const crossPop2 = document.querySelector(".cross-btn2");
 const popup = document.querySelector(".popup");
+const popup2 = document.querySelector(".popup2");
 
-
-
-btnPop.addEventListener("click", function() {
+btnPop.addEventListener("click", function () {
   popup.style.display = "flex";
-openPopup();
+  openPopup();
+});
+
+crossPop.addEventListener("click", function () {
+  popup.style.display = "none"; 
+});
+
+crossPop2.addEventListener("click", function () {
+  popup2.style.display = "none"; 
 });
 
 
-
-
-
 function openPopup() {
-  crossPop.addEventListener("click", function() {
-    popup.style.display = "none"; // Modifiez l'opacité pour cacher la popup
-    console.log("fermeture");
-  });
-  // Sélectionne toutes les images dans la galerie
   const galleryImages = document.querySelectorAll(".gallery img");
-  // Sélectionne la div de la popup
-  const popup = document.querySelector(".popup");
-  // Sélectionne la div de la galerie dans la popup
-  const popupGallery = popup.querySelector(".gallery-popup");
-  // Vide la galerie popup pour éviter les duplications
+  const popupContent = document.querySelector(".popup");
+  const popupGallery = popupContent.querySelector(".gallery-popup");
   popupGallery.innerHTML = '';
+
   
-  // Créer une fonction pour gérer la fermeture de la popup
- 
-  
-  // Créer une croix pour la fermeture de la popup
-  const crossDelete = document.createElement("button");
-  crossDelete.classList.add("cross-btn-img");
-  crossDelete.innerHTML = '<i class="fa-solid fa-trash-can"></i>';
-  
-  // Ajouter une croix pour la fermeture de la popup
-  const closeButton = document.createElement("div");
-  closeButton.appendChild(crossDelete);
-  popup.appendChild(closeButton);
-  
-  // Copier chaque image de la galerie à la popup
   galleryImages.forEach(img => {
-      const imgCopy = img.cloneNode(true); // Clone l'élément img
-      const newDiv = document.createElement("div");
-      
-      // Créer une croix pour chaque image
-      const imageCross = crossDelete.cloneNode(true);
-      
-      newDiv.appendChild(imgCopy); // Ajoute l'image clonée à la galerie popup
-      newDiv.appendChild(imageCross); // Ajoute la croix à côté de l'image
-      popupGallery.appendChild(newDiv); // Ajoute le div contenant l'image et la croix à la galerie popup
+    const imgCopy = img.cloneNode(true); 
+    const newDiv = document.createElement("div");
+    const crossDelete = document.createElement("i");
+
+    crossDelete.classList = "trash-btn-img fa-solid fa-trash-can";
+    crossDelete.dataset.id = img.dataset.id;
+
+    crossDelete.addEventListener("click", deleteImg);
+
+    newDiv.appendChild(imgCopy); 
+    newDiv.appendChild(crossDelete); 
+    popupGallery.appendChild(newDiv); 
   });
-  
-  // Affiche la popup
-  popup.classList.remove("hidden");
+
+  popupContent.classList.remove("hidden");
 }
+
+async function deleteImg(e) {
+  try {
+    const token = sessionStorage.getItem('token');
+    const imageId = e.target.dataset.id;
+    const result = await Delete(token, imageId)
+      .then(() => {
+        e.target.parentNode.style.display = "none";
+      })
+  } catch (error) {
+    console.error('Une erreur est survenue lors de la suppression de l\'image :', error);
+  }
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  // Votre code JavaScript ici
+  function previewImage(event) {
+    var reader = new FileReader();
+    reader.onload = function() {
+      var imgElement = document.createElement('img');
+      imgElement.src = reader.result;
+      var imagePreview = document.getElementById('image-preview');
+      if (imagePreview) {
+        imagePreview.innerHTML = '';
+        imagePreview.appendChild(imgElement);
+      } 
+    }
+    reader.readAsDataURL(event.target.files[0]);
+  }
+  document.getElementById('fileInput').addEventListener('change', previewImage);
+  });
+// Écouter les changements dans l'élément input file
+
+document.getElementById("btn-add-img").addEventListener("click", function(event) {
+  event.preventDefault(); 
+  popup.style.display = "none";
+  popup2.style.display = "flex";
+});
+
+document.querySelector(".arrow-prev").addEventListener("click", function() {
+  popup2.style.display = "none";
+  popup.style.display = "flex";
+});

@@ -232,25 +232,38 @@ button {
 	.title-portfolio  h2 {
             padding-right: 15px;
         }
+	
 		.title-portfolio  .i-modif {
-            display: flex;
-            align-items: center;
-		}
-		.title-portfolio  .i-modif   .btn-pop {
                 cursor: pointer;
-                
-                display: flex;
 		}
-		.title-portfolio  .i-modif   .btn-pop      p {
+		.title-portfolio  .i-modif {
                 font-size: 14px;
             }
 
-			.title-portfolio  .i-modif   .btn-pop    i {
+			.title-portfolio  .i-modif i {
             font-size: 15px;
             padding-right: 10px;
             font-weight: 300;
 
         }
-		.content-connect {
+		.banner, #logout, .title-portfolio button {
 			display: none;
-		  }
+		}
+		#login, .filtres {
+			display: none;
+		}
+
+
+.content-connect .banner, .content-connect #logout {
+	display: block;
+}
+.content-connect .title-portfolio button {
+	display: flex;
+}
+
+.content-non-connect .filtres {
+	display: flex;
+}
+.content-non-connect #login {
+	display: block;
+}

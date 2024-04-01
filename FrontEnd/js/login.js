@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function() {
             const maybetoken = await login(formData);
 
             if (maybetoken) {
-                localStorage.setItem('token', maybetoken);
+                sessionStorage.setItem('token', maybetoken);
                 window.location.href = '../index.html';
             } else {
             const errorMessageElement = document.getElementsByClassName("error-message")[0];

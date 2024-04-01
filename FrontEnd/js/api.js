@@ -1,7 +1,3 @@
-/*async function buildCategoryButtons() {
-const categories = await getCategories();
-// ici ajouter code pour fabriquer les boutons
-}*/
 
 /* recuperation des Categorie */
 
@@ -47,6 +43,48 @@ async function login(formData) {
     }
   } catch (error) {
     // Gérer l'erreur ici si nécessaire, mais ne pas modifier l'interface utilisateur depuis cette fonction
+    throw error; // Propager l'erreur pour qu'elle soit gérée dans la fonction appelante
+  }
+}
+
+async function Delete(token, imageId) {
+  try {
+    const response = await fetch(`http://localhost:5678/api/works/${imageId}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      }
+    });
+    console.log(response);
+    // console.log(`voici le token : ${token}`);
+    if (!response.ok) {
+      throw new Error(`La suppression de l'image avec l'ID ${imageId} a échoué.`);
+    }
+  } catch (error) {
+    console.error(error);
+    throw error; // Propager l'erreur pour qu'elle soit gérée dans la fonction appelante
+  }
+}
+
+async function Add(token) {
+  try {
+    const response = await fetch("http://localhost:5678/api/works", {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      },
+      body: JSON.stringify(formImg)
+
+    });
+    console.log(response);
+    // console.log(`voici le token : ${token}`);
+    if (!response.ok) {
+      throw new Error(`La suppression de l'image avec l'ID ${imageId} a échoué.`);
+    }
+  } catch (error) {
+    console.error(error);
     throw error; // Propager l'erreur pour qu'elle soit gérée dans la fonction appelante
   }
 }
