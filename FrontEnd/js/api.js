@@ -47,7 +47,7 @@ async function login(formData) {
   }
 }
 
-async function Delete(token, imageId) {
+async function deleteImgFunction(token, imageId) {
   try {
     const response = await fetch(`http://localhost:5678/api/works/${imageId}`, {
       method: 'DELETE',
@@ -67,24 +67,16 @@ async function Delete(token, imageId) {
   }
 }
 
-async function Add(token) {
-  try {
-    const response = await fetch("http://localhost:5678/api/works", {
+async function addImgFunction(token, formData) {
+ 
+  fetch("http://localhost:5678/api/works", {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
+        'Content-type' : 'application/json',
         'Authorization': `Bearer ${token}`
       },
-      body: JSON.stringify(formImg)
+      body: JSON.stringify(formData)
+    })
+  // displayWorks();
 
-    });
-    console.log(response);
-    // console.log(`voici le token : ${token}`);
-    if (!response.ok) {
-      throw new Error(`La suppression de l'image avec l'ID ${imageId} a échoué.`);
-    }
-  } catch (error) {
-    console.error(error);
-    throw error; // Propager l'erreur pour qu'elle soit gérée dans la fonction appelante
-  }
 }

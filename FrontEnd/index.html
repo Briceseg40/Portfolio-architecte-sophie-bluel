@@ -40,8 +40,6 @@
 					<div id="image-preview"></div>
 					<i class="fa-solid fa-image"></i>
 					<label for="fileInput" class="btn-ajout-more">
-
-
 						+ Ajouter photo
 						<input type="file" id="fileInput" single style="display: none;">
 					</label>
@@ -49,16 +47,15 @@
 				</div>
 				<div class="title-input">
 					<p>Titre</p>
-					<input type="text" placeholder="">
+					<input type="text" id="title-text" placeholder="">
 				</div>
 				<div class="categorie-select">
 					<p>Catégorie</p>
 					<div>
-						<select>
-							<option value=""></option>
-							<option value="categorie1">Objets</option>
-							<option value="categorie2">Appartements</option>
-							<option value="categorie3">Hotels & restaurants</option>
+						<select id="categorie-option">
+							<option value="1">Objets</option>
+							<option value="2">Appartements</option>
+							<option value="3">Hotels & restaurants</option>
 						</select>
 					</div>
 				</div>
