@@ -35,30 +35,34 @@
 	<div class="popup2">
 		<div class="description-img">
 			<h3>Ajout photo</h3>
-			<form>
+			<form class="form-post">
 				<div class="drag-drop">
 					<div id="image-preview"></div>
 					<i class="fa-solid fa-image"></i>
 					<label for="fileInput" class="btn-ajout-more">
 						+ Ajouter photo
-						<input type="file" id="fileInput" single style="display: none;">
+						<input type="file" id="fileInput" name="image">
 					</label>
 					<label for="fileInput" id="description-add-img">jpg, png : 4mo max</label>
 				</div>
+
 				<div class="title-input">
 					<p>Titre</p>
-					<input type="text" id="title-text" placeholder="">
+					<input type="text" id="title-text" name="title" placeholder="">
 				</div>
+
 				<div class="categorie-select">
 					<p>Catégorie</p>
 					<div>
-						<select id="categorie-option">
-							<option value="1">Objets</option>
-							<option value="2">Appartements</option>
-							<option value="3">Hotels & restaurants</option>
+						<select id="categorie-option" name="category">
+							<option disabled selected value=""></option>
+							<option  value="Objets">Objets</option>
+							<option  value="Appartements">Appartements</option>
+							<option  value="Hotels & restaurants">Hotels & restaurants</option>
 						</select>
 					</div>
 				</div>
+
 				<button class="arrow-prev">
 					<i class="fa-solid fa-arrow-left"></i>
 				</button>
@@ -66,7 +70,7 @@
 					<i class="fa-solid fa-xmark"></i>
 				</button>
 
-				<input id="btn-validate-img" type="submit" value="Valider">
+				<input class="btn-submit" type="submit" value="Valider">
 			</form>
 		</div>
 	</div>

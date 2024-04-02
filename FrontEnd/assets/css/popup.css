@@ -62,7 +62,7 @@ left: 30px;
   top: 5px;
   right: 5px;
   width: 17px;
-  height: 17px;
+  height: 13px;
   z-index: 1; 
 }
 .popup .modificate .gallery-popup {
@@ -83,6 +83,7 @@ left: 30px;
 
 .popup .modificate .gallery-popup div i {
   font-size: 11px;
+  padding-top: 5px;
   color: white; 
   display: flex;
 text-align: center;
@@ -117,10 +118,6 @@ justify-content: center;
 .categorie-select {
   border-bottom: 1px solid#B3B3B3;
   padding-bottom: 50px;
-}
-
-#btn-validate-img {
-  font-size: 14px;
 }
 #image-preview {
   position: absolute;
@@ -176,6 +173,10 @@ z-index: 1;
 .title-input input, .categorie-select select{
   padding-left: 15px;
   color: #444444;
+}
+
+#fileInput {
+  display: none;
 }
 
 

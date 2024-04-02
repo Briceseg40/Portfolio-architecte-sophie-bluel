@@ -13,12 +13,24 @@ btnPop.addEventListener("click", function () {
 
 crossPop.addEventListener("click", function () {
   popup.style.display = "none";
+  window.reload
 });
 
 crossPop2.addEventListener("click", function () {
   popup2.style.display = "none";
+  form.reset();
+  document.querySelector("#image-preview img").remove();
+  checkFields();
 });
 
+window.onclick = function(event) {
+  if (event.target == popup2) {
+      popup2.style.display = "none";
+  }
+  else if (event.target == popup) {
+    popup.style.display = "none";
+}
+}
 
 function openPopup() {
   const galleryImages = document.querySelectorAll(".gallery img");
@@ -80,20 +92,43 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-const form = document.querySelector(".description-img form");
-  const urlImg = document.querySelector("#fileInput");
-  const titleImg = document.querySelector("#title-text").value;
-  const categorieImg = document.querySelector("#categorie-option").value;
+const form = document.querySelector(".form-post");
+const urlImg = document.querySelector("#fileInput");
+const titleImg = document.querySelector("#title-text");
+const categorieImg = document.querySelector("#categorie-option");
+const submitBtn = document.querySelector(".btn-submit");
 
-form.addEventListener("submit",async (e)=> {
+function checkFields() {
+  if (urlImg.value !== "" && titleImg.value !== "" && categorieImg.value !== "" ) {
+    submitBtn.removeAttribute("id", "btn-no-validate"); // Supprime l'ID btn-no-validate
+    submitBtn.removeAttribute("disabled"); // Active le bouton
+  } else {
+    submitBtn.id = "btn-no-validate";
+    submitBtn.disabled = true;
+  }
+}
+
+// Écouteurs d'événements pour les champs du formulaire
+urlImg.addEventListener("input", checkFields);
+titleImg.addEventListener("input", checkFields);
+categorieImg.addEventListener("change", checkFields);
+
+// Vérifie initialement lors du chargement de la page
+checkFields();
+
+form.addEventListener("submit", async (e) => {
   e.preventDefault();
-  const token = sessionStorage.getItem('token');
-  const formData = new FormData()
-  formData.append('image', urlImg.files[0]);
-    formData.append('title', titleImg);
-    formData.append('category', categorieImg);
-  await addImgFunction(token, formData); 
+    const formData = new FormData(form);
+
+    for (item of formData) {
+      console.log(item[0], item[1]);
+    };
+    addImgFunction(formData);
 })
+// formData.append('image', urlImg.files[0]);
+//   formData.append('title', titleImg);
+//   formData.append('category', categorieImg);
+
 
 document.getElementById("btn-add-img").addEventListener("click", function (event) {
   event.preventDefault();
@@ -104,4 +139,7 @@ document.getElementById("btn-add-img").addEventListener("click", function (event
 document.querySelector(".arrow-prev").addEventListener("click", function () {
   popup2.style.display = "none";
   popup.style.display = "flex";
+  form.reset();
+  document.querySelector("#image-preview img").remove();
+  checkFields();
 });

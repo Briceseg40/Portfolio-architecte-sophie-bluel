@@ -67,16 +67,30 @@ async function deleteImgFunction(token, imageId) {
   }
 }
 
-async function addImgFunction(token, formData) {
+async function addImgFunction(formData) {
+  const token = sessionStorage.getItem('token');
  
-  fetch("http://localhost:5678/api/works", {
-      method: 'POST',
+  try {
+
+    const fetchAwait = await fetch("http://localhost:5678/api/works", {
+      method: "POST",
+      body: formData,
       headers: {
-        'Content-type' : 'application/json',
+        'Content-Type': 'multipart/form-data',
         'Authorization': `Bearer ${token}`
-      },
-      body: JSON.stringify(formData)
-    })
+      }
+     });
+  
+     if (!fetchAwait.ok) {
+      return null;
+    } else {
+      const responseData = await fetchAwait.json();
+      console.log(responseData);  
+    }
+  } catch (error) {
+    // Gérer l'erreur ici si nécessaire, mais ne pas modifier l'interface utilisateur depuis cette fonction
+    throw error; // Propager l'erreur pour qu'elle soit gérée dans la fonction appelante
+  }
   // displayWorks();
 
 }
