@@ -3,6 +3,7 @@ const galleryContainer = document.querySelector(".gallery");
 
 displayWorks();
 displayCategories();
+selectCategories();
 
 async function displayWorks() {
     const works = await getWorks();
@@ -17,7 +18,6 @@ function displayWork(work) {
     const figcapGallery = document.createElement("figcaption");
     imgGallery.src = work.imageUrl;
     figcapGallery.innerText = work.title;
-    const filtresGallery = work.category.name;
     figcapGallery.classList.add("card-image");
     imgGallery.dataset.id = work.id;
     galleryContainer.appendChild(figureGallery);
@@ -25,6 +25,9 @@ function displayWork(work) {
     figureGallery.appendChild(figcapGallery);
 }
 
+function removeWorks() {
+    galleryContainer.innerHTML = "";
+}
 
 async function displayCategories() {
     const btnAll = document.createElement("button");
@@ -43,6 +46,18 @@ async function displayCategories() {
         filtres.appendChild(btnFiltre);
     }
 }
+async function selectCategories() {
+    const categories = await getCategories();
+    const selectCategorie = document.getElementById("categorie-option");
+
+    for (const category of categories) {
+        const optionCategorie = document.createElement("option");
+        optionCategorie.value = category.id;
+        optionCategorie.innerText = category.name;
+        selectCategorie.appendChild(optionCategorie);
+    }
+}
+
 
 async function filterCategory(e) {
     galleryContainer.innerHTML = "";

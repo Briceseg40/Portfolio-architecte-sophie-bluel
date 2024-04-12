@@ -129,6 +129,7 @@ nav ul li a, header a {
 	text-align: center;
 }
 .gallery {
+	margin-top: 15px;
 	width: 100%;
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
@@ -173,6 +174,7 @@ margin: auto;
 }
 
 input[type="submit"]{
+	cursor: pointer;
 	font-family: 'Syne';
 	font-weight: 700;
 	color: white;

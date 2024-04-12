@@ -41,39 +41,38 @@
 					<i class="fa-solid fa-image"></i>
 					<label for="fileInput" class="btn-ajout-more">
 						+ Ajouter photo
-						<input type="file" id="fileInput" name="image">
+						<input type="file" id="fileInput" name="image" accept="image/png, image/jpeg" maxlength="4MB">
 					</label>
-					<label for="fileInput" id="description-add-img">jpg, png : 4mo max</label>
+					<label for="fileInput" id="description-add-img" >jpg, png : 4mo max</label>
 				</div>
-
+	
 				<div class="title-input">
 					<p>Titre</p>
 					<input type="text" id="title-text" name="title" placeholder="">
 				</div>
-
+				
 				<div class="categorie-select">
 					<p>Catégorie</p>
 					<div>
 						<select id="categorie-option" name="category">
 							<option disabled selected value=""></option>
-							<option  value="Objets">Objets</option>
-							<option  value="Appartements">Appartements</option>
-							<option  value="Hotels & restaurants">Hotels & restaurants</option>
 						</select>
 					</div>
 				</div>
-
+	
 				<button class="arrow-prev">
 					<i class="fa-solid fa-arrow-left"></i>
 				</button>
 				<button class="cross-btn2">
 					<i class="fa-solid fa-xmark"></i>
 				</button>
-
+				<p id="erreur-submit"></p>
 				<input class="btn-submit" type="submit" value="Valider">
 			</form>
 		</div>
 	</div>
+	
+	
 	<div class="banner">
 		<div class="banner-element">
 			<i class="fa-solid fa-pen-to-square"></i>
@@ -84,8 +83,8 @@
 		<h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
 		<nav>
 			<ul>
-				<li>projets</li>
-				<li>contact</li>
+				<li><a href="#mes-projets">projets</a></li>
+				<li><a href="#contact-we">contact</a></li>
 				<li id="login"><a href="html/login.html">login</a></li>
 				<li id="logout"><a href="">logout</a></li>
 				<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
@@ -111,7 +110,7 @@
 		<section id="portfolio">
 			<div class="title-portfolio">
 
-				<h2>Mes Projets</h2>
+				<h2 id="mes-projets">Mes Projets</h2>
 
 				<button class="btn-pop i-modif">
 					<i class="fa-solid fa-pen-to-square"></i>
@@ -126,7 +125,7 @@
 			</div>
 		</section>
 		<section id="contact">
-			<h2>Contact</h2>
+			<h2 id="contact-we">Contact</h2>
 			<p>Vous avez un projet ? Discutons-en !</p>
 			<form action="#" method="post">
 				<label for="name">Nom</label>

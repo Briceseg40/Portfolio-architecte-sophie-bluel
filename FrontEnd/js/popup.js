@@ -3,6 +3,12 @@ const crossPop = document.querySelector(".cross-btn");
 const crossPop2 = document.querySelector(".cross-btn2");
 const popup = document.querySelector(".popup");
 const popup2 = document.querySelector(".popup2");
+const form = document.querySelector(".form-post");
+const fileInput = document.querySelector("#fileInput");
+const titleInput = document.querySelector("#title-text");
+const categorieInput = document.querySelector("#categorie-option");
+const submitBtn = document.querySelector(".btn-submit");
+
 
 
 
@@ -23,13 +29,15 @@ crossPop2.addEventListener("click", function () {
   checkFields();
 });
 
-window.onclick = function(event) {
+window.onclick = function (event) {
   if (event.target == popup2) {
-      popup2.style.display = "none";
+    popup2.style.display = "none";
+    document.querySelector("#image-preview img").remove();
+
   }
   else if (event.target == popup) {
     popup.style.display = "none";
-}
+  }
 }
 
 function openPopup() {
@@ -79,56 +87,54 @@ document.addEventListener('DOMContentLoaded', function () {
   function previewImage(event) {
     var reader = new FileReader();
     reader.onload = function () {
-      var imgElement = document.createElement('img');
-      imgElement.src = reader.result;
-      var imagePreview = document.getElementById('image-preview');
-      if (imagePreview) {
-        imagePreview.innerHTML = '';
+        var imgElement = document.createElement('img');
+        imgElement.src = reader.result;
+        var imagePreview = document.getElementById('image-preview');
+        while (imagePreview.firstChild) {
+            imagePreview.removeChild(imagePreview.firstChild);
+        }
         imagePreview.appendChild(imgElement);
-      }
     }
     reader.readAsDataURL(event.target.files[0]);
-  }
-});
+}});
 
 
-const form = document.querySelector(".form-post");
-const urlImg = document.querySelector("#fileInput");
-const titleImg = document.querySelector("#title-text");
-const categorieImg = document.querySelector("#categorie-option");
-const submitBtn = document.querySelector(".btn-submit");
+
 
 function checkFields() {
-  if (urlImg.value !== "" && titleImg.value !== "" && categorieImg.value !== "" ) {
-    submitBtn.removeAttribute("id", "btn-no-validate"); // Supprime l'ID btn-no-validate
-    submitBtn.removeAttribute("disabled"); // Active le bouton
+  if (fileInput.value !== "" && titleInput.value !== "" && categorieInput.value !== "") {
+    submitBtn.removeAttribute("id", "btn-no-validate");
+    submitBtn.removeAttribute("disabled");
   } else {
     submitBtn.id = "btn-no-validate";
     submitBtn.disabled = true;
   }
 }
+fileInput.addEventListener("input", checkFields);
+titleInput.addEventListener("input", checkFields);
+categorieInput.addEventListener("change", checkFields);
 
-// Écouteurs d'événements pour les champs du formulaire
-urlImg.addEventListener("input", checkFields);
-titleImg.addEventListener("input", checkFields);
-categorieImg.addEventListener("change", checkFields);
-
-// Vérifie initialement lors du chargement de la page
 checkFields();
 
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
-    const formData = new FormData(form);
+  const formData = new FormData();
 
-    for (item of formData) {
-      console.log(item[0], item[1]);
-    };
-    addImgFunction(formData);
+  formData.append('image', fileInput.files[0]);
+  formData.append('title', titleInput.value);
+  formData.append('category', categorieInput.value);
+  const result = await addImgFunction(formData);
+
+  if (result == "error"){
+    document.querySelector("#erreur-submit").innerHTML = "<p id='erreur-submit'>Erreur dans l'envoie de fichier</p>"
+  } else {
+  popup2.style.display = "none";
+  form.reset();
+
+  removeWorks();
+  displayWorks();
+  }
 })
-// formData.append('image', urlImg.files[0]);
-//   formData.append('title', titleImg);
-//   formData.append('category', categorieImg);
-
 
 document.getElementById("btn-add-img").addEventListener("click", function (event) {
   event.preventDefault();
