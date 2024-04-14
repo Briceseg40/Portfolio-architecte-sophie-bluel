@@ -10,11 +10,11 @@
 }
 
 .popup .modificate, .popup2 .description-img {
-  top: 10%;
+  top: 8%;
   background-color: white;
   position: relative;
   width: 630px;
-  height: 688px;
+  height: 670px;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
@@ -36,6 +36,15 @@
 .popup .modificate p, .popup2 .description-img p {
   padding-top: 40px;
   font-size: 14px;
+}
+
+#erreur-submit {
+  padding-top: 0;
+  color: red;
+}
+
+#form-empty {
+  color: red;
 }
 .popup .modificate .cross-btn, .popup2 .description-img .cross-btn2 {
   display: flex;

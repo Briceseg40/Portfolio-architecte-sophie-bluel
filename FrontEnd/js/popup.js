@@ -105,9 +105,16 @@ function checkFields() {
   if (fileInput.value !== "" && titleInput.value !== "" && categorieInput.value !== "") {
     submitBtn.removeAttribute("id", "btn-no-validate");
     submitBtn.removeAttribute("disabled");
+    document.querySelector("#form-empty").classList.add("hidden");
+    document.querySelector("#form-empty").classList.remove("apparent");
+
+
   } else {
     submitBtn.id = "btn-no-validate";
     submitBtn.disabled = true;
+    document.querySelector("#form-empty").classList.add("apparent");
+    document.querySelector("#form-empty").classList.remove("hidden");
+
   }
 }
 fileInput.addEventListener("input", checkFields);
@@ -126,10 +133,13 @@ form.addEventListener("submit", async (e) => {
   const result = await addImgFunction(formData);
 
   if (result == "error"){
-    document.querySelector("#erreur-submit").innerHTML = "<p id='erreur-submit'>Erreur dans l'envoie de fichier</p>"
+    console.log(error);
+    // document.querySelector("#erreur-submit").innerHTML = "<p id='erreur-submit'>Erreur dans l'ajout d'image,<br> Veuillez verifier les informations</p>"
   } else {
+    document.querySelector("#erreur-submit").innerHTML = "";
   popup2.style.display = "none";
   form.reset();
+  document.querySelector("#image-preview img").remove();
 
   removeWorks();
   displayWorks();
@@ -140,6 +150,8 @@ document.getElementById("btn-add-img").addEventListener("click", function (event
   event.preventDefault();
   popup.style.display = "none";
   popup2.style.display = "flex";
+checkFields();
+
 });
 
 document.querySelector(".arrow-prev").addEventListener("click", function () {

@@ -278,3 +278,11 @@ button {
 .content-non-connect #login {
 	display: block;
 }
+
+.apparent {
+	display: block;
+}
+
+.hidden {
+	display: none;
+}
