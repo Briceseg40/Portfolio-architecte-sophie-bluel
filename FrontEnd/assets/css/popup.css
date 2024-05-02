@@ -47,6 +47,7 @@
   color: red;
 }
 .popup .modificate .cross-btn, .popup2 .description-img .cross-btn2 {
+cursor: pointer;
   display: flex;
   background-color: transparent;
   border: none;
@@ -92,11 +93,12 @@ left: 30px;
 
 .popup .modificate .gallery-popup div i {
   font-size: 11px;
-  padding-top: 5px;
+  padding-top: 4px;
   color: white; 
   display: flex;
 text-align: center;
 justify-content: center;
+cursor: pointer;
 }
 .popup .modificate .gallery-popup div img {
   width: 100%;
@@ -128,6 +130,13 @@ justify-content: center;
   border-bottom: 1px solid#B3B3B3;
   padding-bottom: 50px;
 }
+
+.categorie-select select option {
+  padding: 5px;
+	font-family: 'Syne';
+  font-size: 14px;
+
+}
 #image-preview {
   position: absolute;
   height: 100%;
@@ -153,7 +162,6 @@ z-index: 1;
 }
 .drag-drop {
   position: relative;
-
   height: 169px;
   align-items: center;
   text-align: center;
@@ -180,7 +188,6 @@ z-index: 1;
 }
 
 .title-input input, .categorie-select select{
-  padding-left: 15px;
   color: #444444;
 }
 
