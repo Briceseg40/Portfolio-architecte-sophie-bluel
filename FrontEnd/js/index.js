@@ -78,7 +78,6 @@ async function filterCategory(e) {
 }
 
 
-// Récupérer le token de connexion depuis sessionStorage
 const token = sessionStorage.getItem('token');
 
 if (token) {

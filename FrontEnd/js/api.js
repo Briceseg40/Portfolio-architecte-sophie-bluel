@@ -1,16 +1,10 @@
-
-/* recuperation des Categorie */
-
 async function getWorks() {
   const res = await fetch('http://localhost:5678/api/works');
   const works = await res.json();
   console.log(works)
   return works;
 }
-/* 
--H 'accept: application/json' \
--H 'Content-Type: application/json' \
-*/
+
 
 async function getCategories() {
   const response = await fetch('http://localhost:5678/api/categories');
@@ -19,10 +13,6 @@ async function getCategories() {
   return categories;
 
 }
-// fetch(url, {methode: "POST", body: ...})
-// {accept: "application/json", 'Content-Type': "application/json" } 
-//  body: JSON.stringify({username: "", password:""})
-// method: "MACHIN", body: JSON.stringify(), headers: {...}
 
 async function login(formData) {
   try {
@@ -42,8 +32,7 @@ async function login(formData) {
       return token;
     }
   } catch (error) {
-    // Gérer l'erreur ici si nécessaire, mais ne pas modifier l'interface utilisateur depuis cette fonction
-    throw error; // Propager l'erreur pour qu'elle soit gérée dans la fonction appelante
+    throw error; 
   }
 }
 
@@ -57,13 +46,12 @@ async function deleteImgFunction(token, imageId) {
       }
     });
     console.log(response);
-    // console.log(`voici le token : ${token}`);
     if (!response.ok) {
       throw new Error(`La suppression de l'image avec l'ID ${imageId} a échoué.`);
     }
   } catch (error) {
     console.error(error);
-    throw error; // Propager l'erreur pour qu'elle soit gérée dans la fonction appelante
+    throw error; 
   }
 }
 
@@ -83,5 +71,4 @@ async function addImgFunction(formData) {
       const responseData = await fetchAwait.json();
       console.log(responseData);  
     }
-  // displayWorks();
 }

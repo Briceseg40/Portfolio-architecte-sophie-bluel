@@ -134,7 +134,6 @@ form.addEventListener("submit", async (e) => {
 
   if (result == "error"){
     console.log(error);
-    // document.querySelector("#erreur-submit").innerHTML = "<p id='erreur-submit'>Erreur dans l'ajout d'image,<br> Veuillez verifier les informations</p>"
   } else {
     document.querySelector("#erreur-submit").innerHTML = "";
   popup2.style.display = "none";
