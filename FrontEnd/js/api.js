@@ -1,7 +1,6 @@
 async function getWorks() {
   const res = await fetch('http://localhost:5678/api/works');
   const works = await res.json();
-  console.log(works)
   return works;
 }
 
@@ -9,7 +8,6 @@ async function getWorks() {
 async function getCategories() {
   const response = await fetch('http://localhost:5678/api/categories');
   const categories = await response.json();
-  console.log(categories);
   return categories;
 
 }
@@ -45,7 +43,6 @@ async function deleteImgFunction(token, imageId) {
         'Authorization': `Bearer ${token}`
       }
     });
-    console.log(response);
     if (!response.ok) {
       throw new Error(`La suppression de l'image avec l'ID ${imageId} a échoué.`);
     }
@@ -69,6 +66,6 @@ async function addImgFunction(formData) {
       return "error";
     } else {
       const responseData = await fetchAwait.json();
-      console.log(responseData);  
+      console.log(responseData);
     }
 }

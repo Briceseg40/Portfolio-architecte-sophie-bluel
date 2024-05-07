@@ -1,6 +1,7 @@
 @charset "UTF-8";
 .popup, .popup2 {
   display: none;
+  font-family: 'Work Sans';
   position: fixed;
   justify-content: center;
   width: 100%;
